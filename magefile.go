@@ -7,9 +7,9 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/aluzzardi/dagger/codegen/generator"
 	"github.com/google/go-cmp/cmp"
 	"github.com/magefile/mage/mg" // mg contains helpful utility functions, like Deps
+	"go-vanity-test.netlify.app/dagger/codegen/generator"
 	"go-vanity-test.netlify.app/dagger/sdk/go/dagger"
 )
 

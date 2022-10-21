@@ -7,12 +7,6 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/aluzzardi/dagger/core"
-	"github.com/aluzzardi/dagger/core/schema"
-	"github.com/aluzzardi/dagger/internal/buildkitd"
-	"github.com/aluzzardi/dagger/project"
-	"github.com/aluzzardi/dagger/router"
-	"github.com/aluzzardi/dagger/secret"
 	"github.com/containerd/containerd/platforms"
 	bkclient "github.com/moby/buildkit/client"
 	bkgw "github.com/moby/buildkit/frontend/gateway/client"
@@ -21,6 +15,12 @@ import (
 	"github.com/moby/buildkit/session/secrets/secretsprovider"
 	"github.com/moby/buildkit/util/progress/progressui"
 	specs "github.com/opencontainers/image-spec/specs-go/v1"
+	"go-vanity-test.netlify.app/dagger/core"
+	"go-vanity-test.netlify.app/dagger/core/schema"
+	"go-vanity-test.netlify.app/dagger/internal/buildkitd"
+	"go-vanity-test.netlify.app/dagger/project"
+	"go-vanity-test.netlify.app/dagger/router"
+	"go-vanity-test.netlify.app/dagger/secret"
 	"golang.org/x/sync/errgroup"
 )
 

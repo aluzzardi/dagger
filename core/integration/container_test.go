@@ -5,11 +5,11 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/aluzzardi/dagger/core"
-	"github.com/aluzzardi/dagger/core/schema"
-	"github.com/aluzzardi/dagger/internal/testutil"
 	"github.com/moby/buildkit/identity"
 	"github.com/stretchr/testify/require"
+	"go-vanity-test.netlify.app/dagger/core"
+	"go-vanity-test.netlify.app/dagger/core/schema"
+	"go-vanity-test.netlify.app/dagger/internal/testutil"
 	"go-vanity-test.netlify.app/dagger/sdk/go/dagger"
 )
 

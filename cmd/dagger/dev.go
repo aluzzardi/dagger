@@ -8,9 +8,9 @@ import (
 	"os"
 	"time"
 
-	"github.com/aluzzardi/dagger/engine"
-	"github.com/aluzzardi/dagger/router"
 	"github.com/spf13/cobra"
+	"go-vanity-test.netlify.app/dagger/engine"
+	"go-vanity-test.netlify.app/dagger/router"
 )
 
 var devCmd = &cobra.Command{

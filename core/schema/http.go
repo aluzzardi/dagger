@@ -1,9 +1,9 @@
 package schema
 
 import (
-	"github.com/aluzzardi/dagger/core"
-	"github.com/aluzzardi/dagger/router"
 	"github.com/moby/buildkit/client/llb"
+	"go-vanity-test.netlify.app/dagger/core"
+	"go-vanity-test.netlify.app/dagger/router"
 )
 
 var _ router.ExecutableSchema = &httpSchema{}

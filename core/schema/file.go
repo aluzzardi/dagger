@@ -1,8 +1,8 @@
 package schema
 
 import (
-	"github.com/aluzzardi/dagger/core"
-	"github.com/aluzzardi/dagger/router"
+	"go-vanity-test.netlify.app/dagger/core"
+	"go-vanity-test.netlify.app/dagger/router"
 )
 
 type fileSchema struct {

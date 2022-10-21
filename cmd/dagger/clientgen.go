@@ -12,7 +12,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/aluzzardi/dagger/codegen/generator"
+	"go-vanity-test.netlify.app/dagger/codegen/generator"
 	"go-vanity-test.netlify.app/dagger/sdk/go/dagger"
 )
 

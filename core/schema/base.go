@@ -1,12 +1,12 @@
 package schema
 
 import (
-	"github.com/aluzzardi/dagger/core"
-	"github.com/aluzzardi/dagger/project"
-	"github.com/aluzzardi/dagger/router"
 	bkclient "github.com/moby/buildkit/client"
 	bkgw "github.com/moby/buildkit/frontend/gateway/client"
 	specs "github.com/opencontainers/image-spec/specs-go/v1"
+	"go-vanity-test.netlify.app/dagger/core"
+	"go-vanity-test.netlify.app/dagger/project"
+	"go-vanity-test.netlify.app/dagger/router"
 )
 
 type InitializeArgs struct {

@@ -12,9 +12,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/aluzzardi/dagger/playground"
 	"github.com/graphql-go/graphql"
 	"github.com/graphql-go/handler"
+	"go-vanity-test.netlify.app/dagger/playground"
 )
 
 type Router struct {

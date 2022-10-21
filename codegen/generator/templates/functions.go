@@ -5,7 +5,7 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/aluzzardi/dagger/codegen/introspection"
+	"go-vanity-test.netlify.app/dagger/codegen/introspection"
 )
 
 var (
