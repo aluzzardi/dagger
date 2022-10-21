@@ -1,4 +1,4 @@
-module go-vanity-test.netlify.app/dagger/sdk/go/dagger
+module go-vanity-test.netlify.app/dagger/sdk/go
 
 go 1.19
 
