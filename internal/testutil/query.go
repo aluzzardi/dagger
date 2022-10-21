@@ -3,7 +3,7 @@ package testutil
 import (
 	"context"
 
-	"dagger.io/dagger/sdk/go/dagger"
+	"go-vanity-test.netlify.app/dagger/sdk/go/dagger"
 )
 
 type QueryOptions struct {

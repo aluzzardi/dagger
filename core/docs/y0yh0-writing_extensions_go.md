@@ -14,7 +14,7 @@ displayed_sidebar: "0.3"
    - Then run the following commands to setup the rest of the required dependencies
 
      ```console
-     go get go.dagger.io/dagger@cloak
+     go get go.go-vanity-test.netlify.app/dagger@cloak
      # This is needed to fix a transitive dependency issue (`sirupsen` vs. `Sirupsen`...)
      go mod edit -replace=github.com/docker/docker=github.com/docker/docker@v20.10.3-0.20220414164044-61404de7df1a+incompatible
      ```
@@ -47,7 +47,7 @@ import (
   "fmt"
   "strings"
 
- "go.dagger.io/dagger/sdk/go/dagger"
+ "go.go-vanity-test.netlify.app/dagger/sdk/go/dagger"
 )
 
 type Foo struct {

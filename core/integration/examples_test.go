@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"testing"
 
-	"dagger.io/dagger/sdk/go/dagger"
 	"github.com/stretchr/testify/require"
+	"go-vanity-test.netlify.app/dagger/sdk/go/dagger"
 )
 
 func TestExtensionAlpine(t *testing.T) {

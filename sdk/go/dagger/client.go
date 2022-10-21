@@ -6,12 +6,12 @@ import (
 	"io"
 	"os"
 
-	"dagger.io/dagger/sdk/go/dagger/internal/engineconn"
-	_ "dagger.io/dagger/sdk/go/dagger/internal/engineconn/embedded" // embedded connection
-	_ "dagger.io/dagger/sdk/go/dagger/internal/engineconn/unix"     // unix connection
-	"dagger.io/dagger/sdk/go/dagger/internal/querybuilder"
 	"github.com/Khan/genqlient/graphql"
 	"github.com/vektah/gqlparser/v2/gqlerror"
+	"go-vanity-test.netlify.app/dagger/sdk/go/dagger/internal/engineconn"
+	_ "go-vanity-test.netlify.app/dagger/sdk/go/dagger/internal/engineconn/embedded" // embedded connection
+	_ "go-vanity-test.netlify.app/dagger/sdk/go/dagger/internal/engineconn/unix"     // unix connection
+	"go-vanity-test.netlify.app/dagger/sdk/go/dagger/internal/querybuilder"
 )
 
 // Client is the Dagger Engine Client

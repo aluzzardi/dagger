@@ -6,9 +6,9 @@ import (
 	"net/http"
 	"net/url"
 
-	"dagger.io/dagger/engine"
-	"dagger.io/dagger/router"
-	"dagger.io/dagger/sdk/go/dagger/internal/engineconn"
+	"go-vanity-test.netlify.app/dagger/engine"
+	"go-vanity-test.netlify.app/dagger/router"
+	"go-vanity-test.netlify.app/dagger/sdk/go/dagger/internal/engineconn"
 )
 
 func init() {

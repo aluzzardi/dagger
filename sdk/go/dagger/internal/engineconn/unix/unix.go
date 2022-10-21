@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"net/url"
 
-	"dagger.io/dagger/sdk/go/dagger/internal/engineconn"
+	"go-vanity-test.netlify.app/dagger/sdk/go/dagger/internal/engineconn"
 )
 
 func init() {

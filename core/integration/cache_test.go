@@ -3,9 +3,9 @@ package core
 import (
 	"testing"
 
-	"dagger.io/dagger/core"
-	"dagger.io/dagger/internal/testutil"
 	"github.com/stretchr/testify/require"
+	"go-vanity-test.netlify.app/dagger/core"
+	"go-vanity-test.netlify.app/dagger/internal/testutil"
 )
 
 func TestCacheVolume(t *testing.T) {

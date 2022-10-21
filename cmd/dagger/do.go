@@ -8,8 +8,8 @@ import (
 	"os"
 	"strings"
 
-	"dagger.io/dagger/sdk/go/dagger"
 	"github.com/spf13/cobra"
+	"go-vanity-test.netlify.app/dagger/sdk/go/dagger"
 	"golang.org/x/term"
 )
 

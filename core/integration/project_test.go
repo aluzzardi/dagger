@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	"dagger.io/dagger/sdk/go/dagger"
 	"github.com/stretchr/testify/require"
+	"go-vanity-test.netlify.app/dagger/sdk/go/dagger"
 )
 
 func TestExtensionMount(t *testing.T) {

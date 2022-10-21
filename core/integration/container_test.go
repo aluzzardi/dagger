@@ -5,12 +5,12 @@ import (
 	"strings"
 	"testing"
 
-	"dagger.io/dagger/core"
-	"dagger.io/dagger/core/schema"
-	"dagger.io/dagger/internal/testutil"
-	"dagger.io/dagger/sdk/go/dagger"
 	"github.com/moby/buildkit/identity"
 	"github.com/stretchr/testify/require"
+	"go-vanity-test.netlify.app/dagger/core"
+	"go-vanity-test.netlify.app/dagger/core/schema"
+	"go-vanity-test.netlify.app/dagger/internal/testutil"
+	"go-vanity-test.netlify.app/dagger/sdk/go/dagger"
 )
 
 func TestContainerScratch(t *testing.T) {

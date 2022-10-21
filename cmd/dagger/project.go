@@ -7,10 +7,10 @@ import (
 	"io"
 	"os"
 
-	"dagger.io/dagger/core/schema"
-	"dagger.io/dagger/project"
-	"dagger.io/dagger/sdk/go/dagger"
 	"github.com/spf13/cobra"
+	"go-vanity-test.netlify.app/dagger/core/schema"
+	"go-vanity-test.netlify.app/dagger/project"
+	"go-vanity-test.netlify.app/dagger/sdk/go/dagger"
 )
 
 /* TODO:

@@ -71,7 +71,7 @@ NOTE: For simplicity, these instructions also currently assume you are creating 
 1. Create and open `index.ts`, using the following as a skeleton for the implementation
 
 ```typescript
-import { client, DaggerServer, gql } from "@dagger.io/dagger";
+import { client, DaggerServer, gql } from "@go-vanity-test.netlify.app/dagger";
 
 const resolvers = {
   Foo: {

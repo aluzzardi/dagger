@@ -4,9 +4,9 @@ import (
 	"context"
 	"testing"
 
-	"dagger.io/dagger/internal/testutil"
-	"dagger.io/dagger/sdk/go/dagger"
 	"github.com/stretchr/testify/require"
+	"go-vanity-test.netlify.app/dagger/internal/testutil"
+	"go-vanity-test.netlify.app/dagger/sdk/go/dagger"
 )
 
 func TestSecretEnvFromFile(t *testing.T) {

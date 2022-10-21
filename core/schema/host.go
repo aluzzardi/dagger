@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	"dagger.io/dagger/core"
-	"dagger.io/dagger/router"
+	"go-vanity-test.netlify.app/dagger/core"
+	"go-vanity-test.netlify.app/dagger/router"
 )
 
 type hostSchema struct {

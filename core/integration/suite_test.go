@@ -3,10 +3,10 @@ package core
 import (
 	"testing"
 
-	"dagger.io/dagger/core"
-	"dagger.io/dagger/internal/testutil"
 	"github.com/moby/buildkit/identity"
 	"github.com/stretchr/testify/require"
+	"go-vanity-test.netlify.app/dagger/core"
+	"go-vanity-test.netlify.app/dagger/internal/testutil"
 )
 
 func newCache(t *testing.T) core.CacheID {

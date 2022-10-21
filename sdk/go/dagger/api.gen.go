@@ -5,8 +5,8 @@ package dagger
 import (
 	"context"
 
-	"dagger.io/dagger/sdk/go/dagger/internal/querybuilder"
 	"github.com/Khan/genqlient/graphql"
+	"go-vanity-test.netlify.app/dagger/sdk/go/dagger/internal/querybuilder"
 )
 
 // graphqlMarshaller is an interface for marshalling an object into GraphQL.

@@ -8,7 +8,6 @@ import (
 	"strconv"
 	"strings"
 
-	"dagger.io/dagger/core/shim"
 	"github.com/containerd/containerd/platforms"
 	"github.com/docker/distribution/reference"
 	bkclient "github.com/moby/buildkit/client"
@@ -20,6 +19,7 @@ import (
 	"github.com/opencontainers/go-digest"
 	specs "github.com/opencontainers/image-spec/specs-go/v1"
 	"github.com/pkg/errors"
+	"go-vanity-test.netlify.app/dagger/core/shim"
 )
 
 // Container is a content-addressed container.

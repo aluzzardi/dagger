@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"sync"
 
-	"dagger.io/dagger/core"
-	"dagger.io/dagger/project"
-	"dagger.io/dagger/router"
 	"github.com/pkg/errors"
+	"go-vanity-test.netlify.app/dagger/core"
+	"go-vanity-test.netlify.app/dagger/project"
+	"go-vanity-test.netlify.app/dagger/router"
 )
 
 type projectSchema struct {

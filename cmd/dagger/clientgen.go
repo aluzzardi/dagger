@@ -12,8 +12,8 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"dagger.io/dagger/codegen/generator"
-	"dagger.io/dagger/sdk/go/dagger"
+	"go-vanity-test.netlify.app/dagger/codegen/generator"
+	"go-vanity-test.netlify.app/dagger/sdk/go/dagger"
 )
 
 var clientGenCmd = &cobra.Command{

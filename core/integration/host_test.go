@@ -5,10 +5,10 @@ import (
 	"path"
 	"testing"
 
-	"dagger.io/dagger/core"
-	"dagger.io/dagger/internal/testutil"
-	"dagger.io/dagger/sdk/go/dagger"
 	"github.com/stretchr/testify/require"
+	"go-vanity-test.netlify.app/dagger/core"
+	"go-vanity-test.netlify.app/dagger/internal/testutil"
+	"go-vanity-test.netlify.app/dagger/sdk/go/dagger"
 )
 
 func TestHostWorkdir(t *testing.T) {

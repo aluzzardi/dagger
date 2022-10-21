@@ -1,8 +1,8 @@
 package schema
 
 import (
-	"dagger.io/dagger/core"
-	"dagger.io/dagger/router"
+	"go-vanity-test.netlify.app/dagger/core"
+	"go-vanity-test.netlify.app/dagger/router"
 )
 
 type directorySchema struct {

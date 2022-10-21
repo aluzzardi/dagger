@@ -7,9 +7,9 @@ import (
 	"go/format"
 	"strings"
 
-	"dagger.io/dagger/codegen/generator/templates"
-	"dagger.io/dagger/codegen/introspection"
-	"dagger.io/dagger/sdk/go/dagger"
+	"go-vanity-test.netlify.app/dagger/codegen/generator/templates"
+	"go-vanity-test.netlify.app/dagger/codegen/introspection"
+	"go-vanity-test.netlify.app/dagger/sdk/go/dagger"
 )
 
 type Config struct {
