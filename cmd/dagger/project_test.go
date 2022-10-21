@@ -7,8 +7,8 @@ import (
 	"path/filepath"
 	"testing"
 
+	"github.com/aluzzardi/dagger/project"
 	"github.com/stretchr/testify/require"
-	"go-vanity-test.netlify.app/dagger/project"
 )
 
 func TestProjectCLI(t *testing.T) {

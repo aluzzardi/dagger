@@ -3,9 +3,9 @@ package secret
 import (
 	"context"
 
+	"github.com/aluzzardi/dagger/core"
 	bkgw "github.com/moby/buildkit/frontend/gateway/client"
 	"github.com/moby/buildkit/session/secrets"
-	"go-vanity-test.netlify.app/dagger/core"
 )
 
 func NewStore() *Store {

@@ -4,12 +4,12 @@ import (
 	"context"
 	"path/filepath"
 
+	"github.com/aluzzardi/dagger/core"
 	"github.com/containerd/containerd/platforms"
 	dockerfilebuilder "github.com/moby/buildkit/frontend/dockerfile/builder"
 	bkgw "github.com/moby/buildkit/frontend/gateway/client"
 	"github.com/moby/buildkit/solver/pb"
 	specs "github.com/opencontainers/image-spec/specs-go/v1"
-	"go-vanity-test.netlify.app/dagger/core"
 )
 
 func (p *State) dockerfileRuntime(ctx context.Context, subpath string, gw bkgw.Client, platform specs.Platform) (*core.Directory, error) {

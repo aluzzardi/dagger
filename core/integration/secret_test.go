@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
+	"github.com/aluzzardi/dagger/internal/testutil"
 	"github.com/stretchr/testify/require"
-	"go-vanity-test.netlify.app/dagger/internal/testutil"
 	"go-vanity-test.netlify.app/dagger/sdk/go/dagger"
 )
 

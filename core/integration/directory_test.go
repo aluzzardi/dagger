@@ -3,9 +3,9 @@ package core
 import (
 	"testing"
 
+	"github.com/aluzzardi/dagger/core"
+	"github.com/aluzzardi/dagger/internal/testutil"
 	"github.com/stretchr/testify/require"
-	"go-vanity-test.netlify.app/dagger/core"
-	"go-vanity-test.netlify.app/dagger/internal/testutil"
 )
 
 func TestEmptyDirectory(t *testing.T) {
@@ -415,7 +415,7 @@ func TestDirectoryDiff(t *testing.T) {
 	/*
 		This triggers a nil panic in Buildkit!
 
-		Issue: https://go-vanity-test.netlify.app/dagger/issues/3337
+		Issue: https://github.com/aluzzardi/dagger/issues/3337
 
 		This might be fixed once we update Buildkit.
 

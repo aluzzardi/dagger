@@ -1,4 +1,4 @@
-module go-vanity-test.netlify.app/dagger
+module github.com/aluzzardi/dagger
 
 go 1.18
 

@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/aluzzardi/dagger/engine"
+	"github.com/aluzzardi/dagger/tracing"
 	"github.com/spf13/cobra"
-	"go-vanity-test.netlify.app/dagger/engine"
-	"go-vanity-test.netlify.app/dagger/tracing"
 )
 
 var (

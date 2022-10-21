@@ -7,8 +7,8 @@ import (
 	"go/format"
 	"strings"
 
-	"go-vanity-test.netlify.app/dagger/codegen/generator/templates"
-	"go-vanity-test.netlify.app/dagger/codegen/introspection"
+	"github.com/aluzzardi/dagger/codegen/generator/templates"
+	"github.com/aluzzardi/dagger/codegen/introspection"
 	"go-vanity-test.netlify.app/dagger/sdk/go/dagger"
 )
 

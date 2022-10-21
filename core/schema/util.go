@@ -4,8 +4,8 @@ import (
 	"errors"
 	"fmt"
 
+	"github.com/aluzzardi/dagger/router"
 	"github.com/graphql-go/graphql/language/ast"
-	"go-vanity-test.netlify.app/dagger/router"
 )
 
 // ErrNotImplementedYet is used to stub out API fields that aren't implemented

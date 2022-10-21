@@ -7,9 +7,9 @@ import (
 	"io"
 	"os"
 
+	"github.com/aluzzardi/dagger/core/schema"
+	"github.com/aluzzardi/dagger/project"
 	"github.com/spf13/cobra"
-	"go-vanity-test.netlify.app/dagger/core/schema"
-	"go-vanity-test.netlify.app/dagger/project"
 	"go-vanity-test.netlify.app/dagger/sdk/go/dagger"
 )
 

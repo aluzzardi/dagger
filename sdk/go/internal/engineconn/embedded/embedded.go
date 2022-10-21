@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"net/url"
 
-	"go-vanity-test.netlify.app/dagger/engine"
-	"go-vanity-test.netlify.app/dagger/router"
+	"github.com/aluzzardi/dagger/engine"
+	"github.com/aluzzardi/dagger/router"
 	"go-vanity-test.netlify.app/dagger/sdk/go/dagger/internal/engineconn"
 )
 
