@@ -2,17 +2,16 @@ module go-vanity-test.netlify.app/dagger/sdk/go
 
 go 1.19
 
-replace github.com/aluzzardi/dagger => ../..
+replace go-vanity-test.netlify.app/dagger => ../..
 
 replace github.com/docker/docker => github.com/docker/docker v20.10.3-0.20220414164044-61404de7df1a+incompatible
 
 require (
 	github.com/Khan/genqlient v0.5.0
-	github.com/aluzzardi/dagger v0.3.0-alpha.6
 	github.com/iancoleman/strcase v0.2.0
 	github.com/stretchr/testify v1.8.0
 	github.com/vektah/gqlparser/v2 v2.5.1
-	go-vanity-test.netlify.app/dagger v0.3.0-alpha.5
+	go-vanity-test.netlify.app/dagger v0.3.0-alpha.8
 )
 
 require (
