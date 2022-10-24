@@ -34,7 +34,7 @@ jobs:
 
           GIT_TRACE=1 GIT_TRANSFER_TRACE=1 GIT_CURL_VERBOSE=1 git \
             -c "http.https://github.com/.extraheader=" \
-            push "https://aluzzardi:${{ secrets.RELEASE_DAGGER_CI_TOKEN }}@github.com/aluzzardi/dagger-go.git" $GITHUB_REF_NAME:"${GITHUB_REF_NAME/sdk\/go\//}"
+            push "https://${{ secrets.RELEASE_DAGGER_CI_TOKEN }}@github.com/aluzzardi/dagger-go.git" $GITHUB_REF_NAME:"${GITHUB_REF_NAME/sdk\/go\//}"
 
 
           # GIT_TRACE=1 GIT_TRANSFER_TRACE=1 GIT_CURL_VERBOSE=1 git \
