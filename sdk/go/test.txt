@@ -1,3 +1,4 @@
 foo
+include this
 update
 bar
