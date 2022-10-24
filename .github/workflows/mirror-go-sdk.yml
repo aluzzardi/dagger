@@ -31,8 +31,8 @@ jobs:
             -- ${{ github.ref_name }}
 
           git remote add mirror "https://github.com/aluzzardi/dagger-go.git"
-          git config --local --remove-section "http.https://github.com/.extraheader"
-          git config --local "http.https://github.com/aluzzardi/dagger-go.git/.extraheader" "AUTHORIZATION: basic ${{ secrets.RELEASE_DAGGER_CI_TOKEN }}"
+          git config --local --unset "http.https://github.com/.extraheader"
+          git config --local "http.https://github.com/.extraheader" "AUTHORIZATION: basic ${{ secrets.RELEASE_DAGGER_CI_TOKEN }}"
 
           GIT_TRACE=1 GIT_TRANSFER_TRACE=1 GIT_CURL_VERBOSE=1 git \
             push mirror $GITHUB_REF_NAME:"${GITHUB_REF_NAME/sdk\/go\//}"
