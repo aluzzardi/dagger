@@ -32,6 +32,6 @@ jobs:
 
           git remote add mirror "https://github.com/aluzzardi/dagger-go.git"
 
-          GIT_TRACE=1 GIT_TRANSFER_TRACE=1 GIT_CURL_VERBOSE=1 git \
+          git \
             -c "http.https://github.com/.extraheader=AUTHORIZATION: basic ${{ secrets.RELEASE_DAGGER_CI_TOKEN }}" \
             push "https://github.com/aluzzardi/dagger-go.git" $GITHUB_REF_NAME:"${GITHUB_REF_NAME/sdk\/go\//}"
