@@ -36,7 +36,7 @@ jobs:
           # git config --local --unset "http.https://github.com/.extraheader"
           # git config --local "http.https://github.com/.extraheader" "AUTHORIZATION: basic ${{ secrets.RELEASE_DAGGER_CI_TOKEN }}"
 
-          git push mirror $GITHUB_REF_NAME:"${GITHUB_REF_NAME/sdk\/go\//}"
+          git push -f mirror $GITHUB_REF_NAME:"${GITHUB_REF_NAME/sdk\/go\//}"
 
 
           # GIT_TRACE=1 GIT_TRANSFER_TRACE=1 GIT_CURL_VERBOSE=1 git \
