@@ -34,4 +34,4 @@ jobs:
 
           GIT_TRACE=1 GIT_TRANSFER_TRACE=1 GIT_CURL_VERBOSE=1 git \
             -c "http.https://github.com/.extraheader=" \
-            push remote $GITHUB_REF_NAME:"${GITHUB_REF_NAME/sdk\/go\//}"
+            push mirror $GITHUB_REF_NAME:"${GITHUB_REF_NAME/sdk\/go\//}"
