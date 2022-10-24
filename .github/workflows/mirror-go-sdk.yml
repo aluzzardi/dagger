@@ -22,7 +22,6 @@ jobs:
 
           export FILTER_BRANCH_SQUELCH_WARNING=1
 
-          git config --local "http.https://github.com/aluzzardi/dagger-go.extraheader=AUTHORIZATION: basic ${{ secrets.RELEASE_DAGGER_CI_TOKEN }}"
           git config user.name dagger-ci
           git config user.email hello@dagger.io
 
@@ -33,4 +32,7 @@ jobs:
 
           git remote add mirror "https://github.com/aluzzardi/dagger-go.git"
 
-          git push mirror $GITHUB_REF_NAME:"${GITHUB_REF_NAME/sdk\/go\//}"
+          git \
+            -c "http.https://github.com/.extraheader=" \
+            -c "http.https://github.com/aluzzardi/dagger-go.extraheader=AUTHORIZATION: basic ${{ secrets.RELEASE_DAGGER_CI_TOKEN }}" \
+            push mirror $GITHUB_REF_NAME:"${GITHUB_REF_NAME/sdk\/go\//}"
