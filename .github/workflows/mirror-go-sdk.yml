@@ -35,7 +35,7 @@ jobs:
           # git config --local "http.https://github.com/.extraheader" "AUTHORIZATION: basic ${{ secrets.RELEASE_DAGGER_CI_TOKEN }}"
 
           GIT_TRACE=1 GIT_TRANSFER_TRACE=1 GIT_CURL_VERBOSE=1 git \
-            -c "http.extraheader=AUTHORIZATION: basic ${{ secrets.RELEASE_DAGGER_CI_TOKEN }}" \
+            -c "http.https://github.com/aluzzardi/dagger-go.git/.extraheader=AUTHORIZATION: basic ${{ secrets.RELEASE_DAGGER_CI_TOKEN }}" \
             push mirror $GITHUB_REF_NAME:"${GITHUB_REF_NAME/sdk\/go\//}"
 
 
