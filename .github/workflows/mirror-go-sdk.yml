@@ -7,6 +7,7 @@ on:
       - sdk/go/**
     paths:
       - "sdk/go/**"
+      - .github/workflows/mirror-go-sdk.yml
 jobs:
   mirror:
     runs-on: ubuntu-latest
@@ -19,6 +20,8 @@ jobs:
       - run: |
           set -euo pipefail
 
+           export FILTER_BRANCH_SQUELCH_WARNING=1
+
           git config user.name dagger-ci
           git config user.email hello@dagger.io
 
@@ -27,6 +30,6 @@ jobs:
             --tree-filter "if [ -f go.mod ]; then go mod edit -dropreplace github.com/dagger/dagger; fi" \
             -- ${{ github.ref_name }}
 
-          git remote add mirror https://x-access-token:${{ secrets.RELEASE_DAGGER_CI_TOKEN }}@github.com/aluzzardi/dagger-go.git
+          git remote add mirror https://aluzzardi:${{ secrets.RELEASE_DAGGER_CI_TOKEN }}@github.com/aluzzardi/dagger-go.git
 
           git push mirror $GITHUB_REF_NAME:"${GITHUB_REF_NAME/sdk\/go\//}"
