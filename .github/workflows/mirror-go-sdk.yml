@@ -27,10 +27,12 @@ jobs:
           git config user.name dagger-ci
           git config user.email hello@dagger.io
 
+          git checkout -b tmp-branch
+
           git filter-branch -f --prune-empty \
             --subdirectory-filter sdk/go \
             --tree-filter "if [ -f go.mod ]; then go mod edit -dropreplace github.com/dagger/dagger; fi" \
-            -- ${{ github.ref_name }}
+            -- tmp-branch
 
 
           git log
@@ -39,7 +41,7 @@ jobs:
           # git config --local --unset "http.https://github.com/.extraheader"
           # git config --local "http.https://github.com/.extraheader" "AUTHORIZATION: basic ${{ secrets.RELEASE_DAGGER_CI_TOKEN }}"
 
-          git push -f mirror $GITHUB_REF_NAME:"${GITHUB_REF_NAME/sdk\/go\//}"
+          git push -f mirror tmp-branch:"${GITHUB_REF_NAME/sdk\/go\//}"
 
 
           # GIT_TRACE=1 GIT_TRANSFER_TRACE=1 GIT_CURL_VERBOSE=1 git \
