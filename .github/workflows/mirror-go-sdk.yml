@@ -30,7 +30,7 @@ jobs:
             --tree-filter "if [ -f go.mod ]; then go mod edit -dropreplace github.com/dagger/dagger; fi" \
             -- ${{ github.ref_name }}
 
-          git remote add mirror "https://github.com/aluzzardi/dagger-go.git"
+          git remote add mirror "https://aluzzardi@github.com/aluzzardi/dagger-go.git"
 
           git \
             -c "http.https://github.com/.extraheader=" \
