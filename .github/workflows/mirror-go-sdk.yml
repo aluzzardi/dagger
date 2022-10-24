@@ -1,0 +1,31 @@
+name: Mirror Go SDK
+on:
+  push:
+    branches:
+      - test
+    tags:
+      - sdk/go/**
+    paths:
+      - "sdk/go/**"
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-go@v3
+        with:
+          go-version: 1.19
+      - uses: actions/checkout@v3
+      - run: |
+          set -euo pipefail
+
+          git config user.name dagger-ci
+          git config user.email hello@dagger.io
+
+          git filter-branch -f --prune-empty \
+            --subdirectory-filter sdk/go \
+            --tree-filter "if [ -f go.mod ]; then go mod edit -dropreplace github.com/dagger/dagger; fi" \
+            -- ${{ github.ref_name }}
+
+          git remote add mirror https://x-access-token:${{ secrets.RELEASE_DAGGER_CI_TOKEN }}@github.com/aluzzardi/dagger-go.git
+
+          git push mirror $GITHUB_REF_NAME:"${GITHUB_REF_NAME/sdk\/go\//}"
