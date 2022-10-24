@@ -11,6 +11,7 @@ jobs:
   mirror:
     runs-on: ubuntu-latest
     steps:
+      # Needed for go mod edit
       - uses: actions/setup-go@v3
         with:
           go-version: 1.19
