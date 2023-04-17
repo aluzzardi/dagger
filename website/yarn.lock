@@ -4691,10 +4691,10 @@ dns-packet@^5.2.2:
   dependencies:
     "@leichtgewicht/ip-codec" "^2.0.1"
 
-docusaurus-plugin-image-zoom@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.npmjs.org/docusaurus-plugin-image-zoom/-/docusaurus-plugin-image-zoom-0.1.1.tgz"
-  integrity sha512-cJXo5TKh9OR1gE4B5iS5ovLWYYDFwatqRm00iXFPOaShZG99l5tgkDKgbQPAwSL9wg4I+wz3aMwkOtDhMIpKDQ==
+docusaurus-plugin-image-zoom@^0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/docusaurus-plugin-image-zoom/-/docusaurus-plugin-image-zoom-0.1.3.tgz#d21380a189763124d7b56ce92d06c6d375e209dd"
+  integrity sha512-oN64Ij8tbWcr9NIG4Dki38GxB4GpH0i+lo8UmPYFoBrjwY5YdvW3bOdZzfwVyPBaVP2hL8q8ITDAWdtQIye8RA==
   dependencies:
     medium-zoom "^1.0.6"
 
