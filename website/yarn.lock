@@ -4709,10 +4709,10 @@ docusaurus-plugin-includes@^1.1.4:
     fs-extra "^10.0.0"
     path "^0.12.7"
 
-docusaurus-plugin-sass@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.npmjs.org/docusaurus-plugin-sass/-/docusaurus-plugin-sass-0.2.2.tgz"
-  integrity sha512-ZZBpj3PrhGpYE2kAnkZB9NRwy/CDi4rGun1oec6PYR8YvGzqxYGtXvLgHi6FFbu8/N483klk8udqyYMh6Ted+A==
+docusaurus-plugin-sass@^0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/docusaurus-plugin-sass/-/docusaurus-plugin-sass-0.2.4.tgz#a9e95b08a35df977b7a782329db7483917c8e617"
+  integrity sha512-r9bLXW6X2z64bzQUQZB1SxmNlGvSO9swTFALgiMjr/1O4FRDti6BseU4Sw2mlZkYvVQTq8cJMJIP6w7z/5We8Q==
   dependencies:
     sass-loader "^10.1.1"
 
