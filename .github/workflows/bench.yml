@@ -1,0 +1,25 @@
+name: test
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - ready_for_review
+  # Enable manual trigger for easy debugging
+  # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#onworkflow_dispatchinputs
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  s3:
+    steps:
+      - run: curl -OL https://github.com/dvassallo/s3-benchmark/raw/master/build/linux-amd64/s3-benchmark
+      - run: chmod +x s3-benchmark
+      - run: ./s3-benchmark
