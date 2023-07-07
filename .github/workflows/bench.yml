@@ -19,6 +19,7 @@ permissions:
 
 jobs:
   s3:
+    runs-on: ubuntu
     steps:
       - run: curl -OL https://github.com/dvassallo/s3-benchmark/raw/master/build/linux-amd64/s3-benchmark
       - run: chmod +x s3-benchmark
