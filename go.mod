@@ -15,7 +15,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/credentials v1.13.20 // indirect
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.31.3 // indirect
 	github.com/charmbracelet/bubbles v0.16.1
-	github.com/charmbracelet/bubbletea v0.24.1
+	github.com/charmbracelet/bubbletea v0.24.2
 	github.com/containerd/containerd v1.7.2
 	github.com/containerd/fuse-overlayfs-snapshotter v1.0.2
 	github.com/containerd/stargz-snapshotter v0.14.3
@@ -49,11 +49,11 @@ require (
 	go.opentelemetry.io/otel/sdk v1.14.0
 	go.opentelemetry.io/otel/trace v1.14.0
 	go.opentelemetry.io/proto/otlp v0.19.0
-	golang.org/x/crypto v0.10.0
+	golang.org/x/crypto v0.11.0
 	golang.org/x/mod v0.11.0
 	golang.org/x/sync v0.3.0
-	golang.org/x/sys v0.9.0
-	golang.org/x/term v0.9.0
+	golang.org/x/sys v0.10.0
+	golang.org/x/term v0.10.0
 	google.golang.org/grpc v1.55.0
 	oss.terrastruct.com/d2 v0.4.0
 )
@@ -73,7 +73,7 @@ require (
 	github.com/prometheus/procfs v0.11.0
 	github.com/rs/zerolog v1.29.1
 	github.com/shurcooL/graphql v0.0.0-20220606043923-3cf50f8a0a29
-	github.com/vito/progrock v0.7.0
+	github.com/vito/progrock v0.10.0
 	github.com/vito/vt100 v0.1.2
 	golang.org/x/exp v0.0.0-20230425010034-47ecfdc1ba53
 	golang.org/x/oauth2 v0.9.0
@@ -190,6 +190,7 @@ require (
 	github.com/tidwall/pretty v1.2.0 // indirect
 	github.com/tonistiigi/go-actions-cache v0.0.0-20220404170428-0bdeb6e1eac7 // indirect
 	github.com/tonistiigi/go-archvariant v1.0.0 // indirect
+	github.com/vito/midterm v0.1.4 // indirect
 	github.com/weaveworks/promrus v1.2.0 // indirect
 	github.com/xanzy/ssh-agent v0.3.3 // indirect
 	github.com/yuin/goldmark v1.5.4 // indirect
@@ -257,8 +258,8 @@ require (
 	github.com/vbatts/tar-split v0.11.2 // indirect
 	github.com/vektah/gqlparser/v2 v2.5.6
 	go.opencensus.io v0.24.0 // indirect
-	golang.org/x/net v0.11.0
-	golang.org/x/text v0.10.0
+	golang.org/x/net v0.12.0
+	golang.org/x/text v0.11.0
 	golang.org/x/time v0.3.0 // indirect
 	golang.org/x/tools v0.10.0 // indirect
 	google.golang.org/genproto v0.0.0-20230306155012-7f2fa6fef1f4 // indirect
