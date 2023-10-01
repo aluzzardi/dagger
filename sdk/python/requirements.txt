@@ -12,7 +12,7 @@ attrs==23.1.0
     # via cattrs
 backoff==2.2.1
     # via gql
-beartype==0.14.1
+beartype==0.16.2
     # via -r -
 black==23.3.0
     # via -r -
