@@ -7,7 +7,7 @@ require (
 	github.com/hexops/gotextdiff v1.0.3
 	github.com/magefile/mage v1.15.0
 	golang.org/x/exp v0.0.0-20230321023759-10a507213a29
-	golang.org/x/mod v0.11.0
+	golang.org/x/mod v0.13.0
 	golang.org/x/sync v0.3.0
 )
 
@@ -17,8 +17,8 @@ require (
 	github.com/adrg/xdg v0.4.0 // indirect
 	github.com/iancoleman/strcase v0.2.0 // indirect
 	github.com/vektah/gqlparser/v2 v2.5.3 // indirect
-	golang.org/x/sys v0.9.0 // indirect
-	golang.org/x/tools v0.10.0 // indirect
+	golang.org/x/sys v0.12.0 // indirect
+	golang.org/x/tools v0.13.0 // indirect
 )
 
 // needed to resolve "ambiguous import: found package cloud.google.com/go/compute/metadata in multiple modules"
