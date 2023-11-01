@@ -83,7 +83,7 @@ pytest-httpx==0.22.0
     # via -r -
 pytest-lazy-fixture==0.6.3
     # via -r -
-pytest-mock==3.11.1
+pytest-mock==3.12.0
     # via -r -
 pytest-subprocess==1.5.0
     # via -r -
