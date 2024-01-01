@@ -5098,10 +5098,10 @@ docusaurus-plugin-sass@^0.2.3:
   dependencies:
     sass-loader "^10.1.1"
 
-docusaurus-plugin-typedoc@^0.19.2:
-  version "0.19.2"
-  resolved "https://registry.yarnpkg.com/docusaurus-plugin-typedoc/-/docusaurus-plugin-typedoc-0.19.2.tgz#2507047176b38c862155eedf31e5ced177cd90f7"
-  integrity sha512-N4B2MOaXIyu+FloFn6zVbGgSqszeFQE/7ZIgFakpkVg5F0rfysiDGac2PHbPf4o8DWdyyviJOAuhXk6U7Febeg==
+docusaurus-plugin-typedoc@^0.22.0:
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/docusaurus-plugin-typedoc/-/docusaurus-plugin-typedoc-0.22.0.tgz#3731c19e18083c1217ef954dc64b667ddbd0b120"
+  integrity sha512-5q+oT+iq3g9DvsMin11pSSmqHRw0i62csHBzkWVtgmsqN/BwGDHnxDiTbHhhkBNQpmRIRgltyNdMnO5x+JUK8Q==
 
 docusaurus2-dotenv@^1.4.0:
   version "1.4.0"
