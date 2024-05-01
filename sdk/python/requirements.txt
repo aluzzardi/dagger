@@ -87,7 +87,7 @@ pytest-mock==3.11.1
     # via -r -
 pytest-subprocess==1.5.0
     # via -r -
-python-dateutil==2.8.2
+python-dateutil==2.9.0.post0
     # via strawberry-graphql
 rich==13.4.2
     # via typer
