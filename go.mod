@@ -36,7 +36,7 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/sirupsen/logrus v1.9.0
 	github.com/spf13/cobra v1.6.1
-	github.com/stretchr/testify v1.8.3
+	github.com/stretchr/testify v1.8.4
 	github.com/tonistiigi/fsutil v0.0.0-20230407161946-9e7a6df48576
 	github.com/urfave/cli v1.22.12
 	github.com/weaveworks/common v0.0.0-20230119144549-0aaa5abd1e63
@@ -49,13 +49,13 @@ require (
 	go.opentelemetry.io/otel/sdk v1.14.0
 	go.opentelemetry.io/otel/trace v1.14.0
 	go.opentelemetry.io/proto/otlp v0.19.0
-	golang.org/x/crypto v0.10.0
-	golang.org/x/mod v0.11.0
-	golang.org/x/sync v0.3.0
-	golang.org/x/sys v0.9.0
-	golang.org/x/term v0.9.0
+	golang.org/x/crypto v0.16.0
+	golang.org/x/mod v0.14.0
+	golang.org/x/sync v0.5.0
+	golang.org/x/sys v0.19.0
+	golang.org/x/term v0.15.0
 	google.golang.org/grpc v1.55.0
-	oss.terrastruct.com/d2 v0.4.0
+	oss.terrastruct.com/d2 v0.6.5
 )
 
 require (
@@ -65,7 +65,7 @@ require (
 	github.com/icholy/replace v0.6.0
 	github.com/jackpal/gateway v1.0.7
 	github.com/mackerelio/go-osstat v0.2.4
-	github.com/mattn/go-isatty v0.0.18
+	github.com/mattn/go-isatty v0.0.20
 	github.com/muesli/termenv v0.15.1
 	github.com/nxadm/tail v1.4.8
 	github.com/opencontainers/runc v1.1.7
@@ -75,7 +75,7 @@ require (
 	github.com/shurcooL/graphql v0.0.0-20220606043923-3cf50f8a0a29
 	github.com/vito/progrock v0.7.0
 	github.com/vito/vt100 v0.1.2
-	golang.org/x/exp v0.0.0-20230425010034-47ecfdc1ba53
+	golang.org/x/exp v0.0.0-20231127185646-65229373498e
 	golang.org/x/oauth2 v0.9.0
 )
 
@@ -100,7 +100,7 @@ require (
 	github.com/alecthomas/chroma v0.10.0 // indirect
 	github.com/alecthomas/chroma/v2 v2.7.0 // indirect
 	github.com/anchore/go-struct-converter v0.0.0-20221118182256-c68fdcfa2092 // indirect
-	github.com/andybalholm/cascadia v1.3.1 // indirect
+	github.com/andybalholm/cascadia v1.3.2 // indirect
 	github.com/aws/aws-sdk-go-v2 v1.17.8 // indirect
 	github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.4.10 // indirect
 	github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.13.2 // indirect
@@ -128,13 +128,13 @@ require (
 	github.com/cpuguy83/go-md2man/v2 v2.0.2 // indirect
 	github.com/cyphar/filepath-securejoin v0.2.3 // indirect
 	github.com/dimchansky/utfbom v1.1.1 // indirect
-	github.com/dlclark/regexp2 v1.9.0 // indirect
+	github.com/dlclark/regexp2 v1.10.0 // indirect
 	github.com/docker/go-metrics v0.0.1 // indirect
-	github.com/dop251/goja v0.0.0-20230402114112-623f9dda9079 // indirect
+	github.com/dop251/goja v0.0.0-20231027120936-b396bb4c349d // indirect
 	github.com/emirpasic/gods v1.18.1 // indirect
 	github.com/fatih/color v1.15.0 // indirect
 	github.com/fogleman/ease v0.0.0-20170301025033-8da417bf1776 // indirect
-	github.com/fsnotify/fsnotify v1.6.0 // indirect
+	github.com/fsnotify/fsnotify v1.7.1-0.20240403050945-7086bea086b7 // indirect
 	github.com/go-git/gcfg v1.5.0 // indirect
 	github.com/go-git/go-billy/v5 v5.4.0 // indirect
 	github.com/go-kit/log v0.2.1 // indirect
@@ -143,9 +143,9 @@ require (
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang-jwt/jwt/v4 v4.4.2 // indirect
 	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0 // indirect
-	github.com/google/go-cmp v0.5.9 // indirect
+	github.com/google/go-cmp v0.6.0 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
-	github.com/google/pprof v0.0.0-20230406165453-00490a63f317 // indirect
+	github.com/google/pprof v0.0.0-20231205033806-a5a03c77bf08 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.11.3 // indirect
 	github.com/hanwen/go-fuse/v2 v2.2.0 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
@@ -158,7 +158,6 @@ require (
 	github.com/jbenet/go-context v0.0.0-20150711004518-d14ea06fba99 // indirect
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	github.com/jonboulle/clockwork v0.4.0 // indirect
-	github.com/jung-kurt/gofpdf v1.16.2 // indirect
 	github.com/kevinburke/ssh_config v1.2.0 // indirect
 	github.com/klauspost/cpuid/v2 v2.0.9 // indirect
 	github.com/kylelemons/godebug v1.1.0 // indirect
@@ -192,7 +191,7 @@ require (
 	github.com/tonistiigi/go-archvariant v1.0.0 // indirect
 	github.com/weaveworks/promrus v1.2.0 // indirect
 	github.com/xanzy/ssh-agent v0.3.3 // indirect
-	github.com/yuin/goldmark v1.5.4 // indirect
+	github.com/yuin/goldmark v1.6.0 // indirect
 	github.com/zmb3/spotify/v2 v2.3.1 // indirect
 	go.opentelemetry.io/contrib/instrumentation/net/http/httptrace/otelhttptrace v0.40.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.40.0 // indirect
@@ -200,14 +199,13 @@ require (
 	go.opentelemetry.io/otel/exporters/otlp/otlptrace v1.14.0 // indirect
 	go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp v1.14.0 // indirect
 	go.opentelemetry.io/otel/metric v0.37.0 // indirect
-	go.uber.org/multierr v1.11.0 // indirect
-	golang.org/x/image v0.7.0 // indirect
-	golang.org/x/xerrors v0.0.0-20220907171357-04be3eba64a2 // indirect
-	gonum.org/v1/plot v0.12.0 // indirect
+	golang.org/x/image v0.14.0 // indirect
+	golang.org/x/xerrors v0.0.0-20231012003039-104605ab7028 // indirect
+	gonum.org/v1/plot v0.14.0 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
 	gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7 // indirect
 	gopkg.in/warnings.v0 v0.1.2 // indirect
-	oss.terrastruct.com/util-go v0.0.0-20230320053557-dcb5aac7d972 // indirect
+	oss.terrastruct.com/util-go v0.0.0-20231101220827-55b3812542c2 // indirect
 )
 
 require (
@@ -257,10 +255,10 @@ require (
 	github.com/vbatts/tar-split v0.11.2 // indirect
 	github.com/vektah/gqlparser/v2 v2.5.6
 	go.opencensus.io v0.24.0 // indirect
-	golang.org/x/net v0.11.0
-	golang.org/x/text v0.10.0
+	golang.org/x/net v0.19.0
+	golang.org/x/text v0.14.0
 	golang.org/x/time v0.3.0 // indirect
-	golang.org/x/tools v0.10.0 // indirect
+	golang.org/x/tools v0.16.0 // indirect
 	google.golang.org/genproto v0.0.0-20230306155012-7f2fa6fef1f4 // indirect
 	google.golang.org/protobuf v1.30.0
 	gopkg.in/yaml.v3 v3.0.1 // indirect
