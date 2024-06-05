@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"os"
 	"path"
 	"strconv"
 	"strings"
@@ -13,6 +14,7 @@ import (
 	cacheutil "github.com/moby/buildkit/cache/util"
 	"github.com/moby/buildkit/client/llb"
 	bkgw "github.com/moby/buildkit/frontend/gateway/client"
+	bkgwpb "github.com/moby/buildkit/frontend/gateway/pb"
 	bksession "github.com/moby/buildkit/session"
 	"github.com/moby/buildkit/snapshot"
 	bksolver "github.com/moby/buildkit/solver"
@@ -194,7 +196,7 @@ func (r *ref) Result(ctx context.Context) (bksolver.CachedResult, error) {
 	ctx = withOutgoingContext(ctx)
 	res, err := r.resultProxy.Result(ctx)
 	if err != nil {
-		return nil, wrapError(ctx, err, r.c.ID())
+		return nil, wrapError(ctx, err, r.c)
 	}
 	return res, nil
 }
@@ -240,7 +242,7 @@ func ConvertToWorkerCacheResult(ctx context.Context, res *solverresult.Result[*r
 	})
 }
 
-func wrapError(ctx context.Context, baseErr error, sessionID string) error {
+func wrapError(ctx context.Context, baseErr error, client *Client) error {
 	var slowCacheErr *bksolver.SlowCacheError
 	if errors.As(baseErr, &slowCacheErr) {
 		if slowCacheErr.Result != nil {
@@ -299,7 +301,7 @@ func wrapError(ctx context.Context, baseErr error, sessionID string) error {
 	if !ok {
 		return errors.Join(baseErr, fmt.Errorf("invalid ref type: %T", metaMountResult.Sys()))
 	}
-	mntable, err := workerRef.ImmutableRef.Mount(ctx, true, bksession.NewGroup(sessionID))
+	mntable, err := workerRef.ImmutableRef.Mount(ctx, true, bksession.NewGroup(client.ID()))
 	if err != nil {
 		return errors.Join(err, baseErr)
 	}
@@ -325,6 +327,11 @@ func wrapError(ctx context.Context, baseErr error, sessionID string) error {
 		}
 	}
 
+	// Start a debug container if the exec failed
+	if err := debugContainer(ctx, execOp.Exec, execErr, client); err != nil {
+		bklog.G(ctx).Debugf("debug terminal error: %v", err)
+	}
+
 	return &ExecError{
 		original: baseErr,
 		Cmd:      execOp.Exec.Meta.Args,
@@ -332,6 +339,100 @@ func wrapError(ctx context.Context, baseErr error, sessionID string) error {
 		Stdout:   strings.TrimSpace(string(stdoutBytes)),
 		Stderr:   strings.TrimSpace(string(stderrBytes)),
 	}
+}
+
+func debugContainer(ctx context.Context, execOp *bksolverpb.ExecOp, execErr *llberror.ExecError, client *Client) error {
+	if !client.Opts.Interactive {
+		return nil
+	}
+
+	internalCall := false
+	for _, env := range execOp.Meta.Env {
+		if strings.HasPrefix(env, "_DAGGER_CALL_DIGEST=") {
+			internalCall = true
+			break
+		}
+	}
+
+	if internalCall {
+		return nil
+	}
+
+	mounts := []ContainerMount{}
+
+	for i, m := range execOp.Mounts {
+		fmt.Fprintf(os.Stderr, "[%d] %v => %#+v\n", i, execOp.Mounts[i], execErr.Mounts[i])
+
+		mountID := execErr.Mounts[i]
+		if mountID == nil {
+			continue
+		}
+
+		workerRef, ok := mountID.Sys().(*bkworker.WorkerRef)
+		if !ok {
+			continue
+		}
+
+		mounts = append(mounts, ContainerMount{
+			WorkerRef: workerRef,
+			Mount: &bkgw.Mount{
+				Dest:      m.Dest,
+				Selector:  m.Selector,
+				Readonly:  m.Readonly,
+				MountType: m.MountType,
+				CacheOpt:  m.CacheOpt,
+				SecretOpt: m.SecretOpt,
+				SSHOpt:    m.SSHOpt,
+				ResultID:  mountID.ID(),
+			},
+		})
+	}
+
+	dbgCtr, err := client.NewContainer(ctx, NewContainerRequest{
+		Hostname: execOp.Meta.Hostname,
+		Mounts:   mounts,
+	})
+	if err != nil {
+		return err
+	}
+	term, err := client.OpenTerminal(ctx)
+	if err != nil {
+		return err
+	}
+
+	fmt.Fprintf(term.Stderr, "%s\n\n\r", execErr.Error())
+
+	dbgShell, err := dbgCtr.Start(ctx, bkgw.StartRequest{
+		Args:         []string{"/bin/sh"},
+		Env:          execOp.Meta.Env,
+		Cwd:          execOp.Meta.Cwd,
+		User:         execOp.Meta.User,
+		SecurityMode: execOp.Security,
+		SecretEnv:    execOp.Secretenv,
+
+		Tty:    true,
+		Stdin:  term.Stdin,
+		Stdout: term.Stdout,
+		Stderr: term.Stderr,
+	})
+	if err != nil {
+		return err
+	}
+	go func() {
+		for resize := range term.ResizeCh {
+			dbgShell.Resize(ctx, resize)
+		}
+	}()
+	waitErr := dbgShell.Wait()
+	termExitCode := 0
+	if waitErr != nil {
+		termExitCode = 1
+		var exitErr *bkgwpb.ExitError
+		if errors.As(waitErr, &exitErr) {
+			termExitCode = int(exitErr.ExitCode)
+		}
+	}
+	return term.Close(termExitCode)
 }
 
 func getExecMetaFile(ctx context.Context, mntable snapshot.Mountable, fileName string) ([]byte, error) {

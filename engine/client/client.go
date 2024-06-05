@@ -68,6 +68,10 @@ type Params struct {
 
 	EngineTrace sdktrace.SpanExporter
 	EngineLogs  sdklog.LogExporter
+
+	Interactive bool
+
+	WithTerminal session.WithTerminalFunc
 }
 
 type Client struct {
@@ -324,6 +328,7 @@ func (c *Client) startSession(ctx context.Context) (rerr error) {
 		ClientSecretToken: c.SecretToken,
 		ClientHostname:    c.hostname,
 		Labels:            c.labels,
+		Interactive:       c.Interactive,
 	})
 
 	// filesync
@@ -347,6 +352,9 @@ func (c *Client) startSession(ctx context.Context) (rerr error) {
 	// host=>container networking
 	bkSession.Allow(session.NewTunnelListenerAttachable(ctx, nil))
 
+	// terminal
+	bkSession.Allow(session.NewTerminalAttachable(ctx, c.Params.WithTerminal))
+
 	// connect to the server, registering our session attachables and starting the server if not
 	// already started
 	c.eg.Go(func() error {
@@ -360,6 +368,7 @@ func (c *Client) startSession(ctx context.Context) (rerr error) {
 				UpstreamCacheImportConfig: c.upstreamCacheImportOptions,
 				UpstreamCacheExportConfig: c.upstreamCacheExportOptions,
 				Labels:                    c.labels,
+				Interactive:               c.Interactive,
 				CloudToken:                os.Getenv("DAGGER_CLOUD_TOKEN"),
 				DoNotTrack:                analytics.DoNotTrack(),
 			}.AppendToMD(meta))
@@ -627,6 +636,7 @@ func (c *Client) DialContext(ctx context.Context, _, _ string) (conn net.Conn, e
 			ClientSecretToken: c.SecretToken,
 			ClientHostname:    c.hostname,
 			Labels:            c.labels,
+			Interactive:       c.Interactive,
 		}.ToGRPCMD())
 	}
 	if err != nil {

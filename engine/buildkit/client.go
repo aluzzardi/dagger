@@ -30,6 +30,7 @@ import (
 	"github.com/moby/buildkit/util/bklog"
 	"github.com/moby/buildkit/util/entitlements"
 	"github.com/moby/buildkit/util/progress/progressui"
+	"github.com/moby/buildkit/worker"
 	bkworker "github.com/moby/buildkit/worker"
 	"github.com/opencontainers/go-digest"
 	"go.opentelemetry.io/otel/trace"
@@ -75,6 +76,9 @@ type Opts struct {
 	DNSConfig        *oci.DNSConfig
 	Frontends        map[string]bkfrontend.Frontend
 	BuildkitLogSink  io.Writer
+
+	Interactive bool
+
 	sharedClientState
 }
 
@@ -317,7 +321,7 @@ func (c *Client) Solve(ctx context.Context, req bkgw.SolveRequest) (_ *Result, r
 	case req.Definition != nil && req.Definition.Def != nil:
 		llbRes, err = c.llbBridge.Solve(ctx, req, c.ID())
 		if err != nil {
-			return nil, wrapError(ctx, err, c.ID())
+			return nil, wrapError(ctx, err, c)
 		}
 	case req.Frontend != "":
 		// HACK: don't force evaluation like this, we can write custom frontend
@@ -403,8 +407,13 @@ func (c *Client) ResolveSourceMetadata(ctx context.Context, op *bksolverpb.Sourc
 	return c.llbBridge.ResolveSourceMetadata(ctx, op, opt)
 }
 
+type ContainerMount struct {
+	*bkgw.Mount
+	WorkerRef *worker.WorkerRef
+}
+
 type NewContainerRequest struct {
-	Mounts   []bkgw.Mount
+	Mounts   []ContainerMount
 	Platform *bksolverpb.Platform
 	Hostname string
 	ExecutionMetadata
@@ -440,8 +449,8 @@ func (c *Client) NewContainer(ctx context.Context, req NewContainerRequest) (*Co
 	for i, m := range req.Mounts {
 		i, m := i, m
 		eg.Go(func() error {
-			var workerRef *bkworker.WorkerRef
-			if m.Ref != nil {
+			workerRef := m.WorkerRef
+			if workerRef == nil && m.Ref != nil {
 				ref, ok := m.Ref.(*ref)
 				if !ok {
 					return fmt.Errorf("dagger: unexpected ref type: %T", m.Ref)
@@ -467,6 +476,7 @@ func (c *Client) NewContainer(ctx context.Context, req NewContainerRequest) (*Co
 					CacheOpt:  m.CacheOpt,
 					SecretOpt: m.SecretOpt,
 					SSHOpt:    m.SSHOpt,
+					ResultID:  m.ResultID,
 				},
 			}
 			return nil
@@ -769,6 +779,112 @@ func (c *Client) ListenHostToContainer(
 			wg.Wait()
 		}
 		return err
+	}, nil
+}
+
+type TerminalClient struct {
+	Stdin    io.ReadCloser
+	Stdout   io.WriteCloser
+	Stderr   io.WriteCloser
+	ResizeCh chan bkgw.WinSize
+	ErrCh    chan error
+	Close    func(exitCode int) error
+}
+
+func (c *Client) OpenTerminal(
+	ctx context.Context,
+) (*TerminalClient, error) {
+	terminalClient := session.NewTerminalClient(c.Opts.MainClientCaller.Conn())
+
+	term, err := terminalClient.Session(ctx)
+	if err != nil {
+		return nil, fmt.Errorf("failed to open terminal: %w", err)
+	}
+
+	var (
+		stdoutR, stdoutW = io.Pipe()
+		stderrR, stderrW = io.Pipe()
+		stdinR, stdinW   = io.Pipe()
+	)
+
+	forwardFD := func(r io.Reader, fn func([]byte) *session.SessionRequest) error {
+		for {
+			b := make([]byte, 2048)
+			n, err := r.Read(b)
+			if err != nil {
+				if err == io.EOF || err == io.ErrClosedPipe {
+					return nil
+				}
+				return fmt.Errorf("error reading fd: %w", err)
+			}
+
+			if err := term.Send(fn(b[:n])); err != nil {
+				return fmt.Errorf("error forwarding fd: %w", err)
+			}
+		}
+	}
+
+	go forwardFD(stdoutR, func(stdout []byte) *session.SessionRequest {
+		return &session.SessionRequest{
+			Msg: &session.SessionRequest_Stdout{Stdout: stdout},
+		}
+	})
+
+	go forwardFD(stderrR, func(stderr []byte) *session.SessionRequest {
+		return &session.SessionRequest{
+			Msg: &session.SessionRequest_Stderr{Stderr: stderr},
+		}
+	})
+
+	errCh := make(chan error)
+	resizeCh := make(chan bkgw.WinSize)
+	go func() {
+		defer close(errCh)
+		defer close(resizeCh)
+		for {
+			res, err := term.Recv()
+			if err != nil {
+				if !errors.Is(err, io.EOF) {
+					bklog.G(ctx).Warnf("terminal recv err: %s", err)
+					errCh <- err
+				}
+				return
+			}
+			switch msg := res.GetMsg().(type) {
+			case *session.SessionResponse_Stdin:
+				_, err := stdinW.Write(msg.Stdin)
+				if err != nil {
+					bklog.G(ctx).Warnf("failed to write stdin: %w", err)
+					errCh <- err
+					return
+				}
+			case *session.SessionResponse_Resize:
+				resizeCh <- bkgw.WinSize{
+					Rows: uint32(msg.Resize.Height),
+					Cols: uint32(msg.Resize.Width),
+				}
+			}
+		}
+	}()
+
+	return &TerminalClient{
+		Stdin:    stdinR,
+		Stdout:   stdoutW,
+		Stderr:   stderrW,
+		ErrCh:    errCh,
+		ResizeCh: resizeCh,
+		Close: func(exitCode int) error {
+			defer stdinW.Close()
+			defer term.CloseSend()
+
+			err := term.Send(&session.SessionRequest{
+				Msg: &session.SessionRequest_Exit{Exit: int32(exitCode)},
+			})
+			if err != nil {
+				return fmt.Errorf("failed to close terminal: %w", err)
+			}
+			return nil
+		},
 	}, nil
 }
 

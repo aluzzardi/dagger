@@ -35,6 +35,10 @@ func withEngine(
 		Processors: telemetry.LogProcessors,
 	}
 
+	params.WithTerminal = withTerminal
+
+	params.Interactive = interactive
+
 	sess, ctx, err := client.Connect(ctx, params)
 	if err != nil {
 		return err
