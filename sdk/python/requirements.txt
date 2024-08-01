@@ -28,7 +28,7 @@ click==8.1.3
     #   typer
 colorama==0.4.6
     # via typer
-gql==3.4.1
+gql==3.5.0
     # via -r -
 graphql-core==3.2.3
     # via
