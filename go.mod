@@ -36,7 +36,7 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/sirupsen/logrus v1.9.0
 	github.com/spf13/cobra v1.6.1
-	github.com/stretchr/testify v1.8.3
+	github.com/stretchr/testify v1.9.0
 	github.com/tonistiigi/fsutil v0.0.0-20230407161946-9e7a6df48576
 	github.com/urfave/cli v1.22.12
 	github.com/weaveworks/common v0.0.0-20230119144549-0aaa5abd1e63
@@ -52,7 +52,7 @@ require (
 	golang.org/x/crypto v0.10.0
 	golang.org/x/mod v0.11.0
 	golang.org/x/sync v0.3.0
-	golang.org/x/sys v0.9.0
+	golang.org/x/sys v0.22.0
 	golang.org/x/term v0.9.0
 	google.golang.org/grpc v1.55.0
 	oss.terrastruct.com/d2 v0.4.0
@@ -214,7 +214,7 @@ require (
 	github.com/Khan/genqlient v0.6.0 // indirect
 	github.com/Microsoft/go-winio v0.6.1 // indirect
 	github.com/Microsoft/hcsshim v0.10.0-rc.8 // indirect
-	github.com/adrg/xdg v0.4.0
+	github.com/adrg/xdg v0.5.0
 	github.com/agext/levenshtein v1.2.3 // indirect
 	github.com/cenkalti/backoff/v4 v4.2.0
 	github.com/containerd/cgroups v1.1.0 // indirect
