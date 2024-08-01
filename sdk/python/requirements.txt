@@ -8,7 +8,7 @@ anyio==3.7.0
     # via
     #   -r -
     #   httpcore
-attrs==23.1.0
+attrs==23.2.0
     # via cattrs
 backoff==2.2.1
     # via gql
