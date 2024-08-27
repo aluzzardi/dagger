@@ -28,7 +28,7 @@ require (
 	github.com/denisbrodbeck/machineid v1.0.1
 	github.com/distribution/reference v0.6.0
 	github.com/docker/cli v27.1.1+incompatible
-	github.com/docker/docker v27.1.1+incompatible
+	github.com/docker/docker v27.1.2+incompatible
 	github.com/dschmidt/go-layerfs v0.2.0
 	github.com/go-git/go-git/v5 v5.12.0
 	github.com/gofrs/flock v0.12.1
@@ -274,6 +274,8 @@ require (
 	dagger.io/dagger v0.12.5
 	github.com/dagger/dagger/engine/distconsts v0.12.5
 )
+
+require github.com/moby/sys/userns v0.1.0 // indirect
 
 replace (
 	dagger.io/dagger => ./sdk/go
