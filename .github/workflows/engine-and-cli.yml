@@ -3,12 +3,6 @@ name: Engine & CLI
 on:
   push:
     branches: ["main"]
-  pull_request:
-    types:
-      - opened
-      - synchronize
-      - reopened
-      - ready_for_review
   # Enable manual trigger for easy debugging
   workflow_dispatch:
 
